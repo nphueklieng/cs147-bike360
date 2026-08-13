@@ -1,5 +1,4 @@
 #include <Arduino.h>
-#include <SparkFunLSM6DSO.h>
 
 #include "Config.h"
 #include "MotionSensor.h"

@@ -7,7 +7,7 @@ static float magBuf[MOTION_AVG_WINDOW];
 static uint8_t magIndex = 0;
 static uint8_t magCount = 0;
 
-// how many recent samples were above the threshold (so they r suspicious)
+// how many recent samples were above the threshold (so they are suspicious)
 static uint8_t motionStreak = 0;
 static uint8_t impactStreak = 0;
 static float lastDynMag = 0.0f;
