@@ -2,7 +2,7 @@
 #include "Config.h"
 #include "Alarm.h"
 #include "MotionDetect.h"
-#include "BleComm.h"
+#include "WifiComm.h"
 
 static DeviceState state = STATE_DISARMED;
 static uint32_t stateEnteredAt = 0;

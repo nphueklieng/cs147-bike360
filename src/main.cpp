@@ -4,7 +4,7 @@
 #include "MotionSensor.h"
 #include "MotionDetect.h"
 #include "Alarm.h"
-#include "BleComm.h"
+#include "WifiComm.h"
 #include "StateMachine.h"
 
 /*
@@ -37,7 +37,7 @@ void setup() {
     Serial.println("Sensor init failed: motion checks disabled");
   }
 
-  bleInit();
+  wifiInit();
 
   lastSampleMs = millis();
   lastStatusLogMs = millis();
@@ -47,7 +47,7 @@ void setup() {
 void loop() {
   uint32_t now = millis();
 
-  bleUpdate();
+  wifiUpdate();
 
   // Check if the alarm should be active. pulse buzzer if active
   updateAlarm();
