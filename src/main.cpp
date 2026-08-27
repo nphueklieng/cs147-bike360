@@ -67,13 +67,13 @@ void loop() {
       motion = motionDetectUpdate(&accel);
 
       // just for printing the accelerometer status periodically
-      if ((now - lastStatusLogMs) >= STATUS_LOG_INTERVAL_MS) {
-        lastStatusLogMs = now;
-        Serial.print("Motion magnitude: ");
-        Serial.print(motionDetectLastMagnitude(), 3);
-        Serial.print(" g | state=");
-        Serial.println(stateMachineStateName());
-      }
+      // if ((now - lastStatusLogMs) >= STATUS_LOG_INTERVAL_MS) {
+      //   lastStatusLogMs = now;
+      //   Serial.print("Motion magnitude: ");
+      //   Serial.print(motionDetectLastMagnitude(), 3);
+      //   Serial.print(" g | state=");
+      //   Serial.println(stateMachineStateName());
+      // }
     } else {
       Serial.println("MPU6050 read failed");
     }

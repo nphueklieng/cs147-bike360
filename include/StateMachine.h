@@ -17,7 +17,7 @@ void stateMachineInit();
 // motionSuspected comes from MotionDetect
 void stateMachineUpdate(bool motionSuspected);
 
-// Called from BLE command handling
+// Called from Wifi command handling
 void stateMachineArm();
 void stateMachineDisarm();
 

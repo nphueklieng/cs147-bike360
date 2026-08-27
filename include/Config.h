@@ -30,17 +30,11 @@
 #define MOTION_CONSEC_SAMPLES 6  // avg hits needed to trigger
 #define IMPACT_CONSEC_SAMPLES 2  // impact hits needed to trigger
 
-// BLE
-#define BLE_DEVICE_NAME "Bike360"
-#define BLE_SERVICE_UUID "6e400001-b5a3-f393-e0a9-e50e24dcca9e"
-#define BLE_CMD_CHAR_UUID "6e400002-b5a3-f393-e0a9-e50e24dcca9e"    // phone writes here
-#define BLE_NOTIFY_CHAR_UUID "6e400003-b5a3-f393-e0a9-e50e24dcca9e" // device notify here
-
 // WI-FI (we replaced BLE with Wi-Fi)
 #define WIFI_SSID "Bike360"
 #define WIFI_PASSWORD "bike360password"
 #define WIFI_AP_CHANNEL 1   // there are 13 channels, Channel 1 is the default
-#define WIFI_MAX_CLIENTS 1   // there's only 1 owner
+#define WIFI_MAX_CLIENTS 4   // there's only 1 owner
 #define WIFI_CMD_PORT 3333   // TCP port the phone connects to when it joins wifi
 
 #define SERIAL_BAUD 115200

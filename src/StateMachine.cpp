@@ -51,7 +51,7 @@ void stateMachineArm() {
   armedAt = millis();
   enterState(STATE_ARMED);
   Serial.println("Device armed");
-  bleNotify("STATUS:ARMED");
+  wifiNotify("STATUS:ARMED");
 }
 
 void stateMachineDisarm() {
@@ -61,7 +61,7 @@ void stateMachineDisarm() {
   settleCleared = false;
   enterState(STATE_DISARMED);
   Serial.println("Device disarmed");
-  bleNotify("STATUS:DISARMED");
+  wifiNotify("STATUS:DISARMED");
 }
 
 void stateMachineUpdate(bool motionSuspected) {
@@ -99,8 +99,8 @@ void stateMachineUpdate(bool motionSuspected) {
     case STATE_ALARM_TRIGGERED:
       // turns everything on, notifies phone, and immediately jumps to ALARM_ACTIVE
       startAlarm();
-      bleNotify("THEFT_DETECTED");
-      bleNotify("ALARM_ACTIVE");
+      wifiNotify("THEFT_DETECTED");
+      wifiNotify("ALARM_ACTIVE");
       enterState(STATE_ALARM_ACTIVE);
       break;
 
@@ -119,7 +119,7 @@ void stateMachineUpdate(bool motionSuspected) {
       settleCleared = false;
       armedAt = millis();
       enterState(STATE_ARMED);
-      bleNotify("STATUS:ARMED");
+      wifiNotify("STATUS:ARMED");
       break;
   }
 

@@ -12,6 +12,7 @@ void updateAlarm();
 
 bool alarmIsActive();
 
-// check if time since startAlarm() is ALARM_DURATION_MS
+// check if time since startAlarm() is ALARM_DURATION_MS has elapsed since startAlarm().
+bool alarmTimedOut();
 
 #endif
