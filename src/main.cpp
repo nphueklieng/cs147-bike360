@@ -6,6 +6,7 @@
 #include "Alarm.h"
 #include "WifiComm.h"
 #include "StateMachine.h"
+#include "PowerSleep.h"
 
 /*
  Bike360
@@ -27,6 +28,9 @@ void setup() {
   Serial.println();
   Serial.println("=== Bike360 boot ===");
 
+  // Log wake cause and start DISARMED awake window before Wi-Fi/state.
+  powerSleepInit();
+
   // Hardware / logic init outputs first, then sensing, then radio
   alarmInit();
   motionDetectReset();
@@ -35,6 +39,12 @@ void setup() {
   sensorOk = motionSensorInit();
   if (!sensorOk) {
     Serial.println("Sensor init failed: motion checks disabled");
+  }
+
+  // If we woke because the bike moved while DISARMED, refresh the window
+  if (powerSleepWokeFromMotion()) {
+    powerSleepRefreshDisarmAwakeWindow();
+    Serial.println("Motion wake while (will be) DISARMED — Wi-Fi up for ARM");
   }
 
   wifiInit();

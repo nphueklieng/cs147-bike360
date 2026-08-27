@@ -3,6 +3,7 @@
 #include "Alarm.h"
 #include "MotionDetect.h"
 #include "WifiComm.h"
+#include "PowerSleep.h"
 
 static DeviceState state = STATE_DISARMED;
 static uint32_t stateEnteredAt = 0;
@@ -60,6 +61,9 @@ void stateMachineDisarm() {
   motionDetectReset();
   settleCleared = false;
   enterState(STATE_DISARMED);
+  
+  // After DISARM, keep the radio up briefly so the phone can re-ARM without us having to shake to wake it up
+  powerSleepRefreshDisarmAwakeWindow();
   Serial.println("Device disarmed");
   wifiNotify("STATUS:DISARMED");
 }
@@ -69,8 +73,12 @@ void stateMachineUpdate(bool motionSuspected) {
   // evaluates currenft state, check time, and reacts to motion
   switch (state) {
     case STATE_DISARMED:
-      // literally do nothing, ignore all motion. only able to leave this state if call stateMachineArm()
-      // TODO: sleep
+      // Ignore motion for alarm purposes. Only ARM leaves this state.
+      // Once the awake window expires, deep sleep
+      // to maximize battery
+      if (powerSleepDisarmAwakeExpired()) {
+        powerSleepEnterDeep();  // never returns
+      }
       break;
 
     case STATE_ARMED: {
@@ -92,7 +100,9 @@ void stateMachineUpdate(bool motionSuspected) {
       if (motionSuspected) {
         Serial.println("Theft detected!");
         enterState(STATE_ALARM_TRIGGERED);
+        break;
       }
+      powerSleepEnterLight();
       break;
     }
 

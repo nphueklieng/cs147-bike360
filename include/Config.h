@@ -5,6 +5,12 @@
 #define I2C_SDA_PIN 21
 #define I2C_SCL_PIN 22
 #define BUZZER_PIN 18
+#define IMU_INT_PIN 4
+
+// Wake when activity is detected, and what threshold
+#define IMU_INT_WAKE_LEVEL HIGH
+#define IMU_INT_WAKE_THRESHOLD 4  // in LSBs of (full scale / 64)
+
 
 // 1 = HIGH turns buzzer on
 #define BUZZER_ACTIVE_HIGH 1
@@ -21,6 +27,9 @@
 #define ARM_SETTLE_MS 2000          // ignore initial motion right after ARM
 #define STATUS_LOG_INTERVAL_MS 1000 // Serial magnitude print rate
 #define BLE_ADV_RESTART_MS 100      // wait before re-advertising
+
+// after boot or wake, stay awake for a while so u dont sleep forever
+#define DISARM_AWAKE_MS 60000
 
 // MOTION DETECTION
 // values are in g, after adjusting for gravity

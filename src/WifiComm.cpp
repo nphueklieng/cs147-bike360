@@ -122,3 +122,17 @@ void wifiNotify(const char *message) {
   Serial.print("WiFi notify: ");
   Serial.println(message);
 }
+
+
+void wifiShutdown() {
+  // Drop the TCP client first so the phone gets clean disconnect
+  if (client) {
+    client.stop();
+  }
+  server.end();
+
+  // take down the SoftAP, then power the Wi-Fi modem off
+  WiFi.softAPdisconnect(true);
+  WiFi.mode(WIFI_OFF);
+  Serial.println("WiFi shut down for sleep");
+}

@@ -23,6 +23,8 @@ bool motionSensorInit();
 // update *out to the latest accel/gyro sample. false = bus/sensor error
 bool motionSensorReadAccel(AccelSample *out);
 bool motionSensorReadGyro(GyroSample *out);
+bool motionSensorEnableWakeInterrupt();  // wake interrupt
+void motionSensorClearWakeInterrupt();   // clear the INT so we can sleep again
 
 // |a| = sqrt(ax^2 + ay^2 + az^2). Includes gravity when at rest
 float accelMagnitude(const AccelSample *a);
