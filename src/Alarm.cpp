@@ -7,9 +7,11 @@ static uint32_t startedAt = 0;  // when startAlarm() was called
 static uint32_t pulseAt = 0;    // last time we turned the pin on or off
 
 static void buzzerWrite(bool on) {
-  // Active-high module means on is at HIGH
-  bool level = BUZZER_ACTIVE_HIGH ? on : !on;
-  digitalWrite(BUZZER_PIN, level ? HIGH : LOW);
+  if (on) {
+    tone(BUZZER_PIN, 1000);
+  } else {
+    noTone(BUZZER_PIN);
+  }
 }
 
 void alarmInit() {
