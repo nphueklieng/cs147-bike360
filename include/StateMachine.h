@@ -3,7 +3,7 @@
 
 #include <Arduino.h>
 
-// High-level device modes. Transitions are handled in StateMachine.cpp.
+// device modes, we handle transitions in StateMachine.cpp.
 enum DeviceState {
   STATE_DISARMED = 0,      // idle, motion ignored
   STATE_ARMED,             // watching for theft
@@ -14,14 +14,14 @@ enum DeviceState {
 
 void stateMachineInit();
 
-// Advance the FSM. motionSuspected comes from MotionDetect.
+// motionSuspected comes from MotionDetect
 void stateMachineUpdate(bool motionSuspected);
 
-// Called from BLE command handling (via the pending-command path).
+// Called from BLE command handling
 void stateMachineArm();
 void stateMachineDisarm();
 
 DeviceState stateMachineGetState();
-const char *stateMachineStateName();  // printable label for logs / STATUS
+const char *stateMachineStateName();  // get label for STATUS
 
 #endif

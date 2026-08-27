@@ -3,21 +3,21 @@
 
 #include <Arduino.h>
 
-// Phone writes ASCII commands to the CMD characteristic:
+// Phone writes ASCII commands:
 //   ARM | DISARM | PING | STATUS
 //
-// Device notifies on the NOTIFY characteristic:
+// Device notifies:
 //   THEFT_DETECTED | ALARM_ACTIVE | BATTERY_LOW
 //   CONNECTED | DISCONNECTED | STATUS:... | PONG
 
 bool bleInit();
 
-// Call every loop: drains pending phone commands + restarts advertising.
+// call every loop: get the new phone commands + restarts advertising.
 void bleUpdate();
 
 bool bleIsConnected();
 
-// Send a short ASCII event to the phone (also printed on Serial).
+// send a short message to the phone
 void bleNotify(const char *message);
 
 #endif

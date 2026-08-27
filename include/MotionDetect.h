@@ -3,15 +3,15 @@
 
 #include "MotionSensor.h"
 
-// Clear average buffer, streaks, and gravity estimate.
-// Call on boot, after ARM, and after an alarm finishes.
+// Clear the average buffer, streaks, and gravity estimate.
+// called on boot, after ARM, and after an alarm finishes.
 void motionDetectReset();
 
-// Feed one accel sample.
-// Returns true only when motion looks like theft (not a single noisy spike).
+// Inputted one accelerometer sample.
+// Returns true only when motion looks like theft
 bool motionDetectUpdate(const AccelSample *sample);
 
-// Most recent dynamic magnitude in g (gravity removed). For Serial tuning.
+// Most recent magnitude in g
 float motionDetectLastMagnitude();
 
 #endif

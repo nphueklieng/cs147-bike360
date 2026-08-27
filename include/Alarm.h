@@ -3,16 +3,15 @@
 
 #include <Arduino.h>
 
-void alarmInit();   // set buzzer pin, ensure off
+void alarmInit();   // set buzzer pin, make sure its off
 void startAlarm();  // begin pulsing
-void stopAlarm();   // force off (safe to call when already stopped)
+void stopAlarm();   // force alarm to turn off 
 
-// Drive the pulse pattern. Call often from loop(); uses millis(), no delay().
+// for the buzzer pattern
 void updateAlarm();
 
 bool alarmIsActive();
 
-// true when ALARM_DURATION_MS has elapsed since startAlarm().
-bool alarmTimedOut();
+// check if time since startAlarm() is ALARM_DURATION_MS
 
 #endif

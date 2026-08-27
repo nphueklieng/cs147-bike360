@@ -10,7 +10,7 @@
 #define BUZZER_ACTIVE_HIGH 1
 
 // LSM6DSO
-// 0x6B when SA0/SDO is HIGH (SparkFun breakout default); 0x6A if SA0 is LOW
+// 0x6B when SA0/SDO is HIGH 
 #define LSM6DSO_ADDR 0x6B
 
 // TIMING
@@ -34,7 +34,7 @@
 #define BLE_DEVICE_NAME "Bike360"
 #define BLE_SERVICE_UUID "6e400001-b5a3-f393-e0a9-e50e24dcca9e"
 #define BLE_CMD_CHAR_UUID "6e400002-b5a3-f393-e0a9-e50e24dcca9e"    // phone writes here
-#define BLE_NOTIFY_CHAR_UUID "6e400003-b5a3-f393-e0a9-e50e24dcca9e" // we notify here
+#define BLE_NOTIFY_CHAR_UUID "6e400003-b5a3-f393-e0a9-e50e24dcca9e" // device notify here
 
 #define SERIAL_BAUD 115200
 
