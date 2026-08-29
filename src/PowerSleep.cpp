@@ -106,12 +106,12 @@ void powerSleepEnterDeep() {
   esp_deep_sleep_start();
 }
 
+// unfortunately the wifi access point does not work while in light sleep mode
 void powerSleepEnterLight() {
   Serial.println("Entering LIGHT sleep (ARMED) — wake on IMU motion");
   Serial.flush();
 
   prepareImuGpioWake();
-  shutdownWifiForSleep();
 
   // Light sleep RAM is retained, millis() continues, we resume here on wake
   esp_light_sleep_start();
@@ -124,6 +124,5 @@ void powerSleepEnterLight() {
   // Clear IMU INT so the next sleep doesn't instantly wake again
   motionSensorClearWakeInterrupt();
 
-  restoreWifiAfterLightSleep();
   Serial.println("Left LIGHT sleep");
 }

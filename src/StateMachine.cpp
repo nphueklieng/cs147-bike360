@@ -83,7 +83,6 @@ void stateMachineUpdate(bool motionSuspected) {
 
     case STATE_ARMED: {
       // Give the user time to clip the device on / walk away
-      // TODO: we want the device to sleep to save power until a movement wakes it up
       if ((millis() - armedAt) < ARM_SETTLE_MS) {
         break;
       }
@@ -102,7 +101,7 @@ void stateMachineUpdate(bool motionSuspected) {
         enterState(STATE_ALARM_TRIGGERED);
         break;
       }
-      powerSleepEnterLight();
+      // powerSleepEnterLight();  light sleep mode does not support wifi access point, so it does not make sense to use while armed
       break;
     }
 
