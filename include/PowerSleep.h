@@ -7,7 +7,7 @@
 void powerSleepInit();
 
 // Extend or restart the DISARMED "stay awake" window.
-void powerSleepRefreshDisarmAwakeWindow();
+void powerSleepRefreshDisarmAwakeWindow(uint32_t durationMs);
 
 // True when DISARM_AWAKE_MS has elapsed since the last refresh.
 bool powerSleepDisarmAwakeExpired();

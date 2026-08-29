@@ -29,7 +29,8 @@
 #define BLE_ADV_RESTART_MS 100      // wait before re-advertising
 
 // after boot or wake, stay awake for a while so u dont sleep forever
-#define DISARM_AWAKE_MS 60000
+#define DISARM_AWAKE_MS 5000         // disarm from arm mode
+#define DISARM_AWAKE_MOTION_MS 60000 // disarm from motion wake
 
 // MOTION DETECTION
 // values are in g, after adjusting for gravity

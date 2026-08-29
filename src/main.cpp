@@ -43,7 +43,6 @@ void setup() {
 
   // If we woke because the bike moved while DISARMED, refresh the window
   if (powerSleepWokeFromMotion()) {
-    powerSleepRefreshDisarmAwakeWindow();
     Serial.println("Motion wake while (will be) DISARMED — Wi-Fi up for ARM");
   }
 

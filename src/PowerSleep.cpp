@@ -77,11 +77,12 @@ void powerSleepInit() {
   pinMode(IMU_INT_PIN, INPUT);
 
   // give the owner a chance to connect after boot or deep wake.
-  powerSleepRefreshDisarmAwakeWindow();
+  powerSleepRefreshDisarmAwakeWindow(
+      wokeFromMotion ? DISARM_AWAKE_MOTION_MS : DISARM_AWAKE_MS);
 }
 
-void powerSleepRefreshDisarmAwakeWindow() {
-  disarmAwakeUntil = millis() + DISARM_AWAKE_MS;
+void powerSleepRefreshDisarmAwakeWindow(uint32_t durationMs) {
+  disarmAwakeUntil = millis() + durationMs;
   Serial.print("DISARMED awake window until ms=");
   Serial.println(disarmAwakeUntil);
 }

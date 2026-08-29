@@ -63,7 +63,7 @@ void stateMachineDisarm() {
   enterState(STATE_DISARMED);
   
   // After DISARM, keep the radio up briefly so the phone can re-ARM without us having to shake to wake it up
-  powerSleepRefreshDisarmAwakeWindow();
+  powerSleepRefreshDisarmAwakeWindow(DISARM_AWAKE_MS);
   Serial.println("Device disarmed");
   wifiNotify("STATUS:DISARMED");
 }
